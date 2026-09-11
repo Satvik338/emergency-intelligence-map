@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #090d16;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); }
+::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.5); }
+
+/* Glass */
+@layer utilities {
+  .glass {
+    @apply bg-slate-900/80 backdrop-blur-md border border-white/10;
+  }
+  .glass-light {
+    @apply bg-slate-800/60 backdrop-blur-sm border border-white/5;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300;
+  }
+}
+
+/* ── Google Maps Overrides ──────────────────────────────────────────── */
+.gm-style .gm-style-iw-c {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  color: white !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  padding: 8px 12px !important;
+}
+
+.gm-style .gm-style-iw-c::before {
+  background: rgba(15, 23, 42, 0.95) !important;
+}
+
+.gm-style .gm-style-iw-d {
+  background: transparent !important;
+  border: none !important;
+  overflow: hidden !important;
+}
+
+.gm-style .gm-style-iw-chr {
+  display: none !important;
+}
+
+.gm-style .gm-style-iw-t {
+  display: none !important;
+}
+
+/* Hide Google Maps branding in corners */
+.gm-style-cc {
+  background: rgba(15, 23, 42, 0.7) !important;
+  border-radius: 6px !important;
+}
+
+.gm-style-cc span,
+.gm-style-cc a {
+  color: #64748b !important;
+  font-size: 9px !important;
+}
+
+/* ── Hazard zone animations ─────────────────────────────────────────── */
+@keyframes hazard-pulse {
+  0%, 100% { opacity: 0.12; }
+  50% { opacity: 0.25; }
+}
+
+@keyframes ripple-expand {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(239, 68, 68, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+}
+
+/* ── Radar sweep CSS ────────────────────────────────────────────────── */
+@keyframes radar-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.radar-sweep {
+  animation: radar-sweep 4s linear infinite;
+  transform-origin: center center;
+}
+
+/* ── SOS button glow ────────────────────────────────────────────────── */
+@keyframes sos-glow {
+  0%, 100% { box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3); }
+  50% { box-shadow: 0 4px 40px rgba(239, 68, 68, 0.6); }
+}
+
+/* ── Broadcast ticker scroll ────────────────────────────────────────── */
+@keyframes ticker-scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.ticker-scroll {
+  animation: ticker-scroll 30s linear infinite;
+}
+
+.ticker-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* ── Route danger pulse ─────────────────────────────────────────────── */
+@keyframes route-danger {
+  0%, 100% { opacity: 0.8; stroke-dashoffset: 0; }
+  50% { opacity: 1; stroke-dashoffset: 10; }
+}

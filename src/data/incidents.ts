@@ -1,0 +1,247 @@
+import type { Incident, EmergencyFacility, RiskZone } from '../types';
+
+export const incidents: Incident[] = [
+  {
+    id: 'INC-001',
+    title: 'Severe Flood - Brahmaputra Basin',
+    type: 'flood',
+    severity: 'critical',
+    priorityScore: 94,
+    aiConfidence: 0.96,
+    reportCount: 47,
+    coordinates: { lat: 26.1445, lng: 91.7362 },
+    description: 'Catastrophic flooding in Brahmaputra basin affecting multiple villages. Water levels risen 3.2m above danger mark. Immediate evacuation required for 12,450+ residents.',
+    reports: [
+      { id: 'RPT-001', text: 'Road completely flooded, water entering homes rapidly. Help needed immediately.', source: 'Citizen App', timestamp: '2026-08-24T08:15:00Z', language: 'en', sentiment: -0.89 },
+      { id: 'RPT-002', text: 'पानी बहुत तेजी से बढ़ रहा है। गाँव में बच्चे फंसे हैं।', source: 'SMS Alert', timestamp: '2026-08-24T08:22:00Z', language: 'hi', sentiment: -0.95 },
+      { id: 'RPT-003', text: 'School building surrounded by water. 30 students and 5 teachers trapped on second floor.', source: 'Field Report', timestamp: '2026-08-24T08:35:00Z', language: 'en', sentiment: -0.92 },
+      { id: 'RPT-004', text: 'Bridge at Dhemaji collapsed. Entire east side cut off from rescue routes.', source: 'Drone Feed', timestamp: '2026-08-24T09:01:00Z', language: 'en', sentiment: -0.88 },
+      { id: 'RPT-005', text: 'Cattle drowning in fields near Majuli island. Farmers desperate for help.', source: 'Radio Relay', timestamp: '2026-08-24T09:12:00Z', language: 'en', sentiment: -0.78 },
+    ],
+    nearbyInfrastructure: [
+      { name: 'Dhemaji District Hospital', type: 'hospital', distance: 4.2, coordinates: { lat: 26.1800, lng: 91.7700 } },
+      { name: 'Dhemaji Govt HS School', type: 'shelter', distance: 1.8, coordinates: { lat: 26.1500, lng: 91.7400 } },
+      { name: 'Dhemaji Police Station', type: 'police', distance: 5.1, coordinates: { lat: 26.1900, lng: 91.7600 } },
+      { name: 'Fire Station Dhemaji', type: 'fire_station', distance: 6.3, coordinates: { lat: 26.1700, lng: 91.7800 } },
+    ],
+    createdAt: '2026-08-24T07:30:00Z',
+    updatedAt: '2026-08-24T09:15:00Z',
+    isActive: true,
+    boundary: {
+      type: 'Polygon',
+      coordinates: [[
+        [91.70, 26.12], [91.78, 26.12], [91.80, 26.18],
+        [91.76, 26.20], [91.70, 26.18], [91.70, 26.12],
+      ]],
+    },
+  },
+  {
+    id: 'INC-002',
+    title: 'Wildfire - Nilgiri Hills',
+    type: 'fire',
+    severity: 'critical',
+    priorityScore: 91,
+    aiConfidence: 0.93,
+    reportCount: 32,
+    coordinates: { lat: 11.4095, lng: 76.7339 },
+    description: 'Uncontrolled wildfire spreading through Nilgiri Hills tea estates. 2,800 hectares affected. Toxic smoke affecting 5 villages within 8km radius.',
+    reports: [
+      { id: 'RPT-006', text: 'Fire spreading fast through tea plantation. Cannot see 10 meters ahead.', source: 'Citizen App', timestamp: '2026-08-24T06:00:00Z', language: 'en', sentiment: -0.85 },
+      { id: 'RPT-007', text: 'Smoke very thick. Elderly people in nearby village coughing badly. Need masks.', source: 'Health Worker', timestamp: '2026-08-24T06:30:00Z', language: 'en', sentiment: -0.80 },
+      { id: 'RPT-008', text: 'Fire reached the forest boundary. Wildlife running towards village.', source: 'Forest Dept', timestamp: '2026-08-24T07:15:00Z', language: 'en', sentiment: -0.91 },
+    ],
+    nearbyInfrastructure: [
+      { name: 'Nilgiri Government Hospital', type: 'hospital', distance: 8.5, coordinates: { lat: 11.4100, lng: 76.7400 } },
+      { name: 'Ooty Relief Camp', type: 'shelter', distance: 12.0, coordinates: { lat: 11.4050, lng: 76.7000 } },
+      { name: 'Masinagudi Police Checkpost', type: 'police', distance: 3.2, coordinates: { lat: 11.4200, lng: 76.7200 } },
+    ],
+    createdAt: '2026-08-24T05:00:00Z',
+    updatedAt: '2026-08-24T07:20:00Z',
+    isActive: true,
+    boundary: {
+      type: 'Polygon',
+      coordinates: [[
+        [76.71, 11.39], [76.76, 11.39], [76.77, 11.43],
+        [76.74, 11.44], [76.71, 11.42], [76.71, 11.39],
+      ]],
+    },
+  },
+  {
+    id: 'INC-003',
+    title: 'Flash Flood - Chennai Metropolitan',
+    type: 'flood',
+    severity: 'high',
+    priorityScore: 78,
+    aiConfidence: 0.88,
+    reportCount: 23,
+    coordinates: { lat: 13.0827, lng: 80.2707 },
+    description: 'Urban flooding in Chennai suburbs due to heavy monsoon rainfall. Multiple neighborhoods inundated. Metro rail disrupted.',
+    reports: [
+      { id: 'RPT-009', text: 'Water 4 feet deep in our street. Car submerged. Please help elderly neighbors.', source: 'Citizen App', timestamp: '2026-08-24T10:00:00Z', language: 'en', sentiment: -0.75 },
+      { id: 'RPT-010', text: '地铁停运，积水严重，数百人被困车站。', source: 'Social Media', timestamp: '2026-08-24T10:15:00Z', language: 'en', sentiment: -0.82 },
+      { id: 'RPT-011', text: 'Hospital basement flooded. Equipment damaged. Patients moved to upper floors.', source: 'Hospital Staff', timestamp: '2026-08-24T10:30:00Z', language: 'en', sentiment: -0.88 },
+    ],
+    nearbyInfrastructure: [
+      { name: 'Chennai General Hospital', type: 'hospital', distance: 2.1, coordinates: { lat: 13.0850, lng: 80.2750 } },
+      { name: 'Anna Nagar Shelter', type: 'shelter', distance: 1.5, coordinates: { lat: 13.0850, lng: 80.2650 } },
+      { name: 'T Nagar Police Station', type: 'police', distance: 3.0, coordinates: { lat: 13.0400, lng: 80.2300 } },
+    ],
+    createdAt: '2026-08-24T09:30:00Z',
+    updatedAt: '2026-08-24T10:45:00Z',
+    isActive: true,
+  },
+  {
+    id: 'INC-004',
+    title: 'Landslide - Western Ghats',
+    type: 'landslide',
+    severity: 'high',
+    priorityScore: 82,
+    aiConfidence: 0.85,
+    reportCount: 15,
+    coordinates: { lat: 15.3959, lng: 73.9604 },
+    description: 'Major landslide blocking NH-66 near Ratnagiri. Multiple vehicles trapped. Rescue operations underway.',
+    reports: [
+      { id: 'RPT-012', text: 'Road completely blocked by rocks and mud. At least 12 vehicles visible trapped.', source: 'Highway Patrol', timestamp: '2026-08-24T11:00:00Z', language: 'en', sentiment: -0.82 },
+      { id: 'RPT-013', text: 'मलबे में फंसे लोगों की चीखें सुनाई दे रही हैं।', source: 'Citizen App', timestamp: '2026-08-24T11:10:00Z', language: 'hi', sentiment: -0.95 },
+    ],
+    nearbyInfrastructure: [
+      { name: 'Ratnagiri District Hospital', type: 'hospital', distance: 15.3, coordinates: { lat: 16.0000, lng: 73.3400 } },
+      { name: 'Chiplun Relief Camp', type: 'shelter', distance: 8.7, coordinates: { lat: 17.5300, lng: 73.5100 } },
+    ],
+    createdAt: '2026-08-24T10:45:00Z',
+    updatedAt: '2026-08-24T11:15:00Z',
+    isActive: true,
+  },
+  {
+    id: 'INC-005',
+    title: 'Earthquake - Manipur Border',
+    type: 'earthquake',
+    severity: 'moderate',
+    priorityScore: 55,
+    aiConfidence: 0.79,
+    reportCount: 8,
+    coordinates: { lat: 24.8170, lng: 93.9368 },
+    description: 'Moderate earthquake (5.2 Richter) near Manipur-Myanmar border. Structural damage reported in 3 villages.',
+    reports: [
+      { id: 'RPT-014', text: 'House walls cracked. Everything shook for about 30 seconds.', source: 'Citizen App', timestamp: '2026-08-24T12:00:00Z', language: 'en', sentiment: -0.55 },
+    ],
+    nearbyInfrastructure: [
+      { name: 'Imphal Regional Hospital', type: 'hospital', distance: 85.0, coordinates: { lat: 24.8170, lng: 93.9368 } },
+    ],
+    createdAt: '2026-08-24T11:50:00Z',
+    updatedAt: '2026-08-24T12:30:00Z',
+    isActive: true,
+  },
+  {
+    id: 'INC-006',
+    title: 'Cyclone Alert - Odisha Coast',
+    type: 'storm',
+    severity: 'moderate',
+    priorityScore: 65,
+    aiConfidence: 0.82,
+    reportCount: 12,
+    coordinates: { lat: 19.8135, lng: 85.8313 },
+    description: 'Cyclonic formation detected off Odisha coast. Expected to intensify within 12 hours. Coastal evacuation advisory issued.',
+    reports: [
+      { id: 'RPT-015', text: 'Sea unusually rough. Fishermen refusing to go out. Wind picking up.', source: 'Coast Guard', timestamp: '2026-08-24T13:00:00Z', language: 'en', sentiment: -0.45 },
+      { id: 'RPT-016', text: 'कोस्टल गाँवों में अलर्ट जारी। मछुआरे वापस आ रहे हैं।', source: 'District Admin', timestamp: '2026-08-24T13:15:00Z', language: 'hi', sentiment: -0.40 },
+    ],
+    nearbyInfrastructure: [
+      { name: 'Puri District Hospital', type: 'hospital', distance: 12.0, coordinates: { lat: 19.8135, lng: 85.8313 } },
+      { name: 'Puri Cyclone Shelter', type: 'shelter', distance: 2.5, coordinates: { lat: 19.8050, lng: 85.8250 } },
+    ],
+    createdAt: '2026-08-24T12:30:00Z',
+    updatedAt: '2026-08-24T13:20:00Z',
+    isActive: true,
+  },
+  {
+    id: 'INC-007',
+    title: 'Local Flood - Kerala Backwaters',
+    type: 'flood',
+    severity: 'low',
+    priorityScore: 32,
+    aiConfidence: 0.72,
+    reportCount: 5,
+    coordinates: { lat: 9.9312, lng: 76.2673 },
+    description: 'Minor waterlogging in low-lying areas of Alappuzha. No casualties reported. Monitoring status.',
+    reports: [
+      { id: 'RPT-017', text: 'Some water on the road but passable. Houses slightly affected.', source: 'Ward Member', timestamp: '2026-08-24T14:00:00Z', language: 'en', sentiment: -0.20 },
+    ],
+    nearbyInfrastructure: [
+      { name: 'Alappuzha Medical College', type: 'hospital', distance: 5.0, coordinates: { lat: 9.9312, lng: 76.2673 } },
+    ],
+    createdAt: '2026-08-24T13:30:00Z',
+    updatedAt: '2026-08-24T14:05:00Z',
+    isActive: true,
+  },
+];
+
+export const emergencyFacilities: EmergencyFacility[] = [
+  // Hospitals
+  { id: 'HOS-001', name: 'AIIMS Delhi', type: 'hospital', coordinates: { lat: 28.5672, lng: 77.2100 }, capacity: 2500, currentOccupancy: 1800, isAccessible: true },
+  { id: 'HOS-002', name: 'JIPMER Puducherry', type: 'hospital', coordinates: { lat: 11.9416, lng: 79.8083 }, capacity: 1800, currentOccupancy: 1200, isAccessible: true },
+  { id: 'HOS-003', name: 'CMC Vellore', type: 'hospital', coordinates: { lat: 12.9248, lng: 79.1351 }, capacity: 3000, currentOccupancy: 2100, isAccessible: true },
+  { id: 'HOS-004', name: 'Narayana Health Bangalore', type: 'hospital', coordinates: { lat: 12.9165, lng: 77.6013 }, capacity: 1500, currentOccupancy: 900, isAccessible: true },
+  { id: 'HOS-005', name: 'KGMU Lucknow', type: 'hospital', coordinates: { lat: 26.8730, lng: 80.9236 }, capacity: 2200, currentOccupancy: 1600, isAccessible: true },
+  { id: 'HOS-006', name: 'SN Medical College Jodhpur', type: 'hospital', coordinates: { lat: 26.2389, lng: 73.0243 }, capacity: 1200, currentOccupancy: 800, isAccessible: false },
+  { id: 'HOS-007', name: 'GMC Guwahati', type: 'hospital', coordinates: { lat: 26.1800, lng: 91.7700 }, capacity: 1000, currentOccupancy: 750, isAccessible: true },
+  // Shelters
+  { id: 'SHL-001', name: 'Delhi Mega Relief Camp', type: 'shelter', coordinates: { lat: 28.5800, lng: 77.2300 }, capacity: 5000, currentOccupancy: 1200, isAccessible: true },
+  { id: 'SHL-002', name: 'Chennai Central Shelter', type: 'shelter', coordinates: { lat: 13.0800, lng: 80.2800 }, capacity: 3000, currentOccupancy: 800, isAccessible: true },
+  { id: 'SHL-003', name: 'Guwahati Flood Shelter', type: 'shelter', coordinates: { lat: 26.1500, lng: 91.7400 }, capacity: 2000, currentOccupancy: 600, isAccessible: true },
+  // Police
+  { id: 'POL-001', name: 'Delhi Police HQ', type: 'police', coordinates: { lat: 28.6300, lng: 77.2200 }, isAccessible: true },
+  { id: 'POL-002', name: 'Chennai City Police', type: 'police', coordinates: { lat: 13.0600, lng: 80.2500 }, isAccessible: true },
+  // Fire Stations
+  { id: 'FIR-001', name: 'Delhi Fire Services HQ', type: 'fire_station', coordinates: { lat: 28.6400, lng: 77.2300 }, isAccessible: true },
+  { id: 'FIR-002', name: 'Chennai Fire Station Central', type: 'fire_station', coordinates: { lat: 13.0700, lng: 80.2600 }, isAccessible: true },
+  { id: 'FIR-003', name: 'Guwahati Fire Station', type: 'fire_station', coordinates: { lat: 26.1700, lng: 91.7600 }, isAccessible: true },
+];
+
+export const riskZones: RiskZone[] = [
+  {
+    id: 'RZ-001',
+    name: 'Flood Risk - Assam Valley',
+    type: 'flood',
+    riskLevel: 'critical',
+    coordinates: { lat: 26.2, lng: 91.5 },
+    boundary: {
+      type: 'Polygon',
+      coordinates: [[
+        [91.0, 25.8], [92.5, 25.8], [92.8, 26.5],
+        [92.0, 26.8], [91.0, 26.5], [91.0, 25.8],
+      ]],
+    },
+    affectedPopulation: 3200000,
+  },
+  {
+    id: 'RZ-002',
+    name: 'Fire Risk - Nilgiri Biosphere',
+    type: 'fire',
+    riskLevel: 'high',
+    coordinates: { lat: 11.5, lng: 76.7 },
+    boundary: {
+      type: 'Polygon',
+      coordinates: [[
+        [76.5, 11.3], [77.0, 11.3], [77.1, 11.6],
+        [76.8, 11.7], [76.5, 11.5], [76.5, 11.3],
+      ]],
+    },
+    affectedPopulation: 450000,
+  },
+  {
+    id: 'RZ-003',
+    name: 'Cyclone Risk - Bay of Bengal',
+    type: 'storm',
+    riskLevel: 'moderate',
+    coordinates: { lat: 15.0, lng: 87.0 },
+    boundary: {
+      type: 'Polygon',
+      coordinates: [[
+        [85.0, 12.0], [90.0, 12.0], [92.0, 18.0],
+        [85.0, 18.0], [85.0, 12.0],
+      ]],
+    },
+    affectedPopulation: 8500000,
+  },
+];
